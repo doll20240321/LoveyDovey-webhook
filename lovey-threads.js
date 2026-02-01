@@ -2,11 +2,9 @@ const RSSParser = require('rss-parser');
 const axios = require('axios');
 const parser = new RSSParser();
 
-// 你的 Discord Webhook URL
-const webhookUrl = 'process.env.WEBHOOK_URL';
-
-// 你的 RSS Feed URL（從 rss.app 拿到的）
-const feedUrl = 'process.env.FEED_URL';
+// 從 Railway Variables 讀取
+const webhookUrl = process.env.WEBHOOK_URL;
+const feedUrl = process.env.FEED_URL;
 
 async function checkFeed() {
     try {
@@ -28,13 +26,12 @@ async function checkFeed() {
 // 先測試一次
 checkFeed();
 
-// 如果要定時檢查（例如每小時一次）
+// 定時檢查（例如每小時一次）
 setInterval(checkFeed, 60 * 60 * 1000);
 
-const axios = require("axios");
-
-axios.post(process.env.WEBHOOK_URL, {
-  content: "Railway 測試訊息：Webhook 成功連線！ 🎉"
+// 額外測試 webhook 是否能送出訊息
+axios.post(webhookUrl, {
+  content: "測試"
 })
-.then(() => console.log("Webhook 測試成功"))
-.catch(err => console.error("Webhook 測試失敗", err));
+.then(() => console.log("成功"))
+.catch(err => console.error("失敗", err));
