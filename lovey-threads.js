@@ -3,10 +3,10 @@ const axios = require('axios');
 const parser = new RSSParser();
 
 // 你的 Discord Webhook URL
-const webhookUrl = 'https://discord.com/api/webhooks/1466704670331375648/fAoC2Sc7SyN54Ua8FcC2kfBvhTn33H2etgfWsw1GpSS154O6iBWU_iMYWdEDmEsqescu';
+const webhookUrl = 'process.env.WEBHOOK_URL';
 
 // 你的 RSS Feed URL（從 rss.app 拿到的）
-const feedUrl = 'https://rss.app/feeds/MBGYrGQI5LXksm8H.xml';
+const feedUrl = 'process.env.FEED_URL';
 
 async function checkFeed() {
     try {
@@ -30,3 +30,4 @@ checkFeed();
 
 // 如果要定時檢查（例如每小時一次）
 setInterval(checkFeed, 60 * 60 * 1000);
+
