@@ -2,9 +2,12 @@ const RSSParser = require('rss-parser');
 const axios = require('axios');
 const parser = new RSSParser();
 
+console.log("Webhook URL:", process.env.WEBHOOK_URL);
+console.log("Feed URL:", process.env.RSS_FEED_URL);
+
 // 從 Railway Variables 讀取
-const webhookUrl = process.env.webhook-url;
-const feedUrl = process.env.rss-feed-url;
+const webhookUrl = process.env.WEBHOOK_URL;
+const feedUrl = process.env.RSS_FEED_URL;
 
 async function checkFeed() {
     try {
@@ -35,4 +38,5 @@ axios.post(webhookUrl, {
 })
 .then(() => console.log("成功"))
 .catch(err => console.error("失敗", err));
+
 
