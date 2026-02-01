@@ -4,7 +4,7 @@
   "description": "",
   "main": "lovey-threads.js",
   "scripts": {
-  "start": "node 7755-threads.js"
+  "start": "node lovey-threads.js"
   }
   "keywords": [],
   "author": "",
